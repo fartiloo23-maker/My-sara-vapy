@@ -1,87 +1,83 @@
-/* عام */
 body {
   background: #fff;
-  font-family: "Poppins", system-ui, sans-serif;
+  font-family: sans-serif;
   margin: 0;
-  padding: 18px;
-  color: #222;
+  padding: 0;
 }
 
-/* شعار المتجر */
+/* شعار */
 .store-logo {
   font-weight: 300;
-  letter-spacing: 6px;
+  text-align: center;
   font-size: 28px;
-  margin: 0;
-  color: #222;
+  margin: 25px 0;
+  letter-spacing: 3px;
 }
 
 /* شبكة المنتجات */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* صفين على الموبايل */
-  gap: 20px;
-  margin-top: 18px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 10px;
 }
 
 /* بطاقة المنتج */
 .product-card {
-  background: #fafafa;
+  background: #fff;
   border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  padding: 10px;
   text-align: center;
+  transition: 0.2s;
 }
 
-/* الصورة */
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+/* صورة المنتج */
 .product-img {
   width: 100%;
-  height: 220px;
-  object-fit: contain;
-  border-radius: 8px;
-  background: #fff;
+  border-radius: 10px;
 }
 
-/* الاسم */
+/* اسم المنتج */
 .product-title {
-  font-size: 13px;
-  margin: 10px 0 6px;
-  color: #333;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0 5px;
 }
 
 /* السعر */
 .product-price {
-  color: #000;
   font-size: 15px;
-  font-weight: 700;
-  margin: 0;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
 }
 
-/* زر واتساب العائم */
+/* زر شراء */
+.buy-btn {
+  display: block;
+  background: black;
+  color: white;
+  padding: 8px 0;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* زر واتساب */
 .whatsapp-btn {
   position: fixed;
-  bottom: 22px;
-  right: 18px;
+  bottom: 25px;
+  right: 25px;
   background: #25D366;
   color: #fff;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 15px;
   border-radius: 50%;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  text-decoration: none;
   font-size: 22px;
-}
-
-/* استجابة للشاشات الكبيرة */
-@media (min-width: 768px) {
-  .product-grid {
-    grid-template-columns: repeat(4, 1fr); /* صف 4 للكبير */
-  }
-  .product-img {
-    height: 160px;
-  }
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
