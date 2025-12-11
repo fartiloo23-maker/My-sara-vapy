@@ -1,41 +1,29 @@
-const productsData = [
+const products = [
   {
-    id: 1,
-    title: "ARMANI PRIVE Rose d’Arabie",
-    price: "Dh 3,250.00 MAD",
-    img: "p1.jpg"
+    name: "Product 1",
+    price: "500 MAD",
+    image: "IMG_1864.jpeg"
   },
   {
-    id: 2,
-    title: "ARMANI PRIVE Vert Malachite",
-    price: "Dh 3,250.00 MAD",
-    img: "p2.jpg"
+    name: "Product 2",
+    price: "500 MAD",
+    image: "IMG_1865.jpeg"
   },
   {
-    id: 3,
-    title: "ARMANI PRIVE Indigo Tanzanite",
-    price: "Dh 3,250.00 MAD",
-    img: "p3.jpg"
-  },
-  {
-    id: 4,
-    title: "ARMANI PRIVE Magenta Tanzanite",
-    price: "Dh 3,250.00 MAD",
-    img: "p4.jpg"
+    name: "Product 3",
+    price: "500 MAD",
+    image: "IMG_1866.jpeg"
   }
 ];
 
-const productsContainer = document.getElementById("products");
+const container = document.getElementById("product-container");
 
-// عرض المنتجات
-productsData.forEach(p => {
-  productsContainer.innerHTML += `
-    <div class="col-6 col-md-4">
-      <div class="product-card">
-        <img src="${p.img}" class="product-img">
-        <h5 class="product-title">${p.title}</h5>
-        <p class="product-price">${p.price}</p>
-      </div>
+products.forEach(p => {
+  container.innerHTML += `
+    <div class="product-card">
+      <img src="${p.image}" class="product-img" />
+      <h3 class="product-title">${p.name}</h3>
+      <p class="product-price">${p.price}</p>
     </div>
   `;
 });
