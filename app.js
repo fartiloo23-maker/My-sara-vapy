@@ -1,29 +1,36 @@
+// بيانات المنتجات - عدّل "name" لاحقًا كما تريد
 const products = [
-  {
-    name: "Product 1",
-    price: "500 MAD",
-    image: "IMG_1864.jpeg"
-  },
-  {
-    name: "Product 2",
-    price: "500 MAD",
-    image: "IMG_1865.jpeg"
-  },
-  {
-    name: "Product 3",
-    price: "500 MAD",
-    image: "IMG_1866.jpeg"
-  }
+  { name: "الاسم لاحقًا", price: "500 د.م", image: "IMG_1864.jpeg" },
+  { name: "الاسم لاحقًا", price: "500 د.م", image: "IMG_1865.jpeg" },
+  { name: "الاسم لاحقًا", price: "500 د.م", image: "IMG_1866.jpeg" }
 ];
 
-const container = document.getElementById("product-container");
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("product-container");
+  if (!container) return;
 
-products.forEach(p => {
-  container.innerHTML += `
-    <div class="product-card">
-      <img src="${p.image}" class="product-img" />
-      <h3 class="product-title">${p.name}</h3>
-      <p class="product-price">${p.price}</p>
-    </div>
-  `;
+  // أنشئ البطاقات
+  products.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+
+    const img = document.createElement("img");
+    img.className = "product-img";
+    img.src = p.image;
+    img.alt = p.name;
+
+    const title = document.createElement("h3");
+    title.className = "product-title";
+    title.textContent = p.name;
+
+    const price = document.createElement("p");
+    price.className = "product-price";
+    price.textContent = p.price;
+
+    card.appendChild(img);
+    card.appendChild(title);
+    card.appendChild(price);
+
+    container.appendChild(card);
+  });
 });
