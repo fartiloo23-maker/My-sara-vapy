@@ -1,36 +1,30 @@
-// بيانات المنتجات - عدّل "name" لاحقًا كما تريد
 const products = [
-  { name: "الاسم لاحقًا", price: "500 د.م", image: "IMG_1864.jpeg" },
-  { name: "الاسم لاحقًا", price: "500 د.م", image: "IMG_1865.jpeg" },
-  { name: "الاسم لاحقًا", price: "500 د.م", image: "IMG_1866.jpeg" }
+    {
+        name: "VENENO",
+        price: "500 MAD",
+        image: "IMG_1864.jpeg"
+    },
+    {
+        name: "UNLIMITED",
+        price: "500 MAD",
+        image: "IMG_1865.jpeg"
+    },
+    {
+        name: "Product 3",
+        price: "500 MAD",
+        image: "IMG_1866.jpeg"
+    }
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("product-container");
-  if (!container) return;
+const container = document.getElementById("products");
 
-  // أنشئ البطاقات
-  products.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-
-    const img = document.createElement("img");
-    img.className = "product-img";
-    img.src = p.image;
-    img.alt = p.name;
-
-    const title = document.createElement("h3");
-    title.className = "product-title";
-    title.textContent = p.name;
-
-    const price = document.createElement("p");
-    price.className = "product-price";
-    price.textContent = p.price;
-
-    card.appendChild(img);
-    card.appendChild(title);
-    card.appendChild(price);
-
-    container.appendChild(card);
-  });
+products.forEach(p => {
+    container.innerHTML += `
+        <div class="product-card">
+            <img src="${p.image}" class="product-img">
+            <h3 class="product-title">${p.name}</h3>
+            <p class="product-price">${p.price}</p>
+            <a class="buy-btn" href="https://wa.me/212600000000">اطلب الآن</a>
+        </div>
+    `;
 });
