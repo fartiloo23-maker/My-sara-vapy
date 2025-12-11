@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luxury Perfume Store</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CASABLANCA - متجر العطور</title>
+
+  <!-- ربط ملف CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- تحميل ملف JS بعد تحميل الصفحة -->
+  <script defer src="app.js"></script>
 </head>
-<link rel="stylesheet" href="style.css">
-<script defer src="app.js"></script>
 <body>
 
-<header class="text-center py-3">
-  <h2 class="store-logo">CASABLANCA</h2>
-</header>
+  <!-- رأس المتجر -->
+  <header class="text-center py-4">
+    <h1 class="store-logo">CASABLANCA</h1>
+  </header>
 
-<div class="container mt-2">
-  <div class="row g-4" id="products"></div>
-</div>
+  <!-- حاوية المنتجات -->
+  <main class="container">
+    <div id="product-container" class="product-grid"></div>
+  </main>
 
-<!-- زر واتساب عائم -->
-<a href="https://wa.me/212600000000" class="whatsapp-btn" target="_blank">💬</a>
+  <!-- زر واتساب عائم - عدّل الرقم لو تحب -->
+  <a class="whatsapp-btn" href="https://wa.me/212600000000" target="_blank" aria-label="WhatsApp">
+    💬
+  </a>
 
-<script src="app.js"></script>
 </body>
 </html>
