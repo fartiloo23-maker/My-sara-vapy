@@ -67,17 +67,19 @@ body {
   border-radius: 8px;
   font-size: 14px;
 }
-..store-description {
+
+.store-description {
   text-align: center;
   font-size: 16px;
   color: #333;
-  line-height: 1.9;
-  max-width: 500px;
-  margin: 15px auto 35px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 20px auto 40px;
   direction: rtl;
   font-weight: 400;
 }
-}
+
+
 /* زر واتساب */
 .whatsapp-btn {
   position: fixed;
