@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CASABLANCA - متجر العطور</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASABLANCA STORE</title>
 
-  <!-- ربط ملف CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- تحميل ملف JS بعد تحميل الصفحة -->
-  <script defer src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- رأس المتجر -->
-  <header class="text-center py-4">
     <h1 class="store-logo">CASABLANCA</h1>
-  </header>
 
-  <!-- حاوية المنتجات -->
-  <main class="container">
-    <div id="product-container" class="product-grid"></div>
-  </main>
+    <div class="product-grid" id="products"></div>
 
-  <!-- زر واتساب عائم - عدّل الرقم لو تحب -->
-  <a class="whatsapp-btn" href="https://wa.me/212600000000" target="_blank" aria-label="WhatsApp">
-    💬
-  </a>
+    <!-- زر واتساب -->
+    <a href="https://wa.me/212600000000" class="whatsapp-btn">💬</a>
 
+    <script defer src="app.js"></script>
 </body>
 </html>
