@@ -68,15 +68,15 @@ body {
   font-size: 14px;
 }
 
-.store-description {
+.welcome-title {
   text-align: center;
-  font-size: 16px;
-  color: #333;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 20px auto 40px;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 40px 0 30px;
+  color: #000;
+  letter-spacing: 2px;
   direction: rtl;
-  font-weight: 400;
+}
 }
 
 
