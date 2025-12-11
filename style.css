@@ -1,0 +1,44 @@
+body {
+  background: #fff;
+  font-family: sans-serif;
+}
+
+.store-logo {
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+.product-card {
+  text-align: center;
+}
+
+.product-img {
+  width: 100%;
+}
+
+.product-title {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #333;
+  font-weight: 500;
+}
+
+.product-price {
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* زر واتساب */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #25D366;
+  color: #fff;
+  padding: 15px 18px;
+  border-radius: 50%;
+  font-size: 22px;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
