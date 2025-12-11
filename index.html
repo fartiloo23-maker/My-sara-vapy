@@ -1,48 +1,86 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>متجري للبيع والشراء</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Vape Shop</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-        .product {
-            background: white;
-            width: 250px;
-            margin: 20px auto;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ccc;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 15px;
-            background: black;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
+        body { margin: 0; font-family: Arial, sans-serif; background: #f0f0f0; }
+        #container { position: relative; width: 100vw; height: 100vh; }
+        #nav { position: absolute; top: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); color: white; padding: 10px; z-index: 10; }
+        #nav a { color: white; margin: 0 15px; text-decoration: none; }
+        #info { position: absolute; bottom: 20px; left: 20px; color: white; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; }
     </style>
 </head>
 <body>
-
-    <h1>أهلاً بك في متجرنا</h1>
-    <p>هنا نعرض منتجات للبيع والشراء 💛</p>
-
-    <div class="product">
-        <h2>منتج تجريبي</h2>
-        <p>وصف بسيط للمنتج.</p>
-        <a href="#" class="btn">شراء</a>
+    <div id="nav">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div id="container"></div>
+    <div id="info">
+        <h3>Welcome to VapeWorld</h3>
+        <p>Explore our 3D vape collection. Rotate the view with your mouse!</p>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Set up scene, camera, renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('container').appendChild(renderer.domElement);
+
+        // Add lighting
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        directionalLight.position.set(1, 1, 1);
+        scene.add(directionalLight);
+
+        // Create 3D vape objects (simple cylinders)
+        const geometry = new THREE.CylinderGeometry(0.5, 0.5, 2, 32);
+        const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 }); // Green for vape theme
+        const vape1 = new THREE.Mesh(geometry, material);
+        vape1.position.x = -3;
+        scene.add(vape1);
+
+        const vape2 = new THREE.Mesh(geometry, material);
+        vape2.position.x = 3;
+        scene.add(vape2);
+
+        // Position camera
+        camera.position.z = 5;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            vape1.rotation.x += 0.01;
+            vape1.rotation.y += 0.01;
+            vape2.rotation.x -= 0.01;
+            vape2.rotation.y -= 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Mouse controls for camera (optional interactivity)
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            camera.position.x = mouseX * 2;
+            camera.position.y = mouseY * 2;
+            camera.lookAt(scene.position);
+        });
+    </script>
 </body>
 </html>
