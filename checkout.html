@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,88 +7,67 @@
     <style>
         body {
             font-family: sans-serif;
-            background: #f4f4f4;
+            direction: rtl;
+            text-align: right;
             padding: 20px;
-        }
-        h2 {
-            text-align: center;
         }
         .box {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 15px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border-radius: 10px;
-            border: 1px solid #ccc;
+            background: #f7f7f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
         button {
             width: 100%;
-            padding: 15px;
-            background: black;
-            color: white;
-            font-size: 20px;
+            padding: 12px;
             border: none;
-            border-radius: 12px;
-            margin-top: 20px;
+            background: #25D366;
+            color: white;
+            font-size: 18px;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
 
-<h2>تأكيد الطلب</h2>
+    <h2>تأكيد الطلب</h2>
 
-<div class="box">
-    <label>الاسم:</label>
-    <input id="name">
+    <div class="box">
+        <p><strong>المنتوج:</strong> <span id="product"></span></p>
+        <p><strong>الثمن:</strong> <span id="price"></span> MAD</p>
+        <p><strong>الكمية:</strong> <span id="qty"></span></p>
+        <p><strong>المجموع:</strong> <span id="total"></span> MAD</p>
+    </div>
 
-    <label>المدينة:</label>
-    <input id="city">
-
-    <label>العنوان:</label>
-    <input id="address">
-
-    <label>الهاتف:</label>
-    <input id="phone">
-
-    <label>الكمية:</label>
-    <input id="qty">
-
-    <label>ملاحظات:</label>
-    <textarea id="notes"></textarea>
-</div>
-
-<button onclick="sendWhatsApp()">تأكيد عبر واتساب</button>
+    <button onclick="sendToWhatsApp()">إتمام الطلب عبر واتساب</button>
 
 <script>
-function sendWhatsApp() {
+    // جلب البيانات من الرابط
+    const urlParams = new URLSearchParams(window.location.search);
 
-    const name = document.getElementById("name").value;
-    const city = document.getElementById("city").value;
-    const address = document.getElementById("address").value;
-    const phone = document.getElementById("phone").value;
-    const qty = document.getElementById("qty").value;
-    const notes = document.getElementById("notes").value;
+    const product = urlParams.get("product");
+    const price = Number(urlParams.get("price"));
+    const qty = Number(urlParams.get("qty"));
 
-    // رقم الواتساب ديالك
-    const yourNumber = "212693949973"; 
+    // عرض البيانات
+    document.getElementById("product").textContent = product;
+    document.getElementById("price").textContent = price;
+    document.getElementById("qty").textContent = qty;
+    document.getElementById("total").textContent = price * qty;
 
-    const msg =
-`طلب جديد:
-الاسم: ${name}
-المدينة: ${city}
-العنوان: ${address}
-الهاتف: ${phone}
-الكمية: ${qty}
-ملاحظات: ${notes}`;
+    // واتساب
+    function sendToWhatsApp() {
+        const message = 
+`السلام عليكم،
+بغيت نطلب:
+• المنتوج: ${product}
+• الثمن: ${price} MAD
+• العدد: ${qty}
+• المجموع: ${price * qty} MAD`;
 
-    const url = `https://wa.me/${yourNumber}?text=${encodeURIComponent(msg)}`;
-    window.location.href = url;
-}
+        const phone = "٢١٢٦٩٣٩٤٩٩٧٣"; // بدّل الرقم ديالك هنا
+        window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    }
 </script>
 
 </body>
