@@ -1,103 +1,84 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gissah – Turkish Valley</title>
+    <title> Gissah – Turkish Valley </title>
     <link rel="stylesheet" href="style.css">
 
     <style>
-        body {
-            font-family: sans-serif;
+        .product-page {
+            width: 90%;
+            max-width: 400px;
+            margin: auto;
             background: #fff;
-            padding: 0;
-            margin: 0;
-        }
-
-        .header {
-            background: #000;
-            padding: 15px;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header img {
-            width: 65px;
-            height: 65px;
-            border-radius: 12px;
-        }
-
-        .back-btn {
-            background: #f6d04d;
-            color: black;
-            padding: 8px 18px;
-            border-radius: 12px;
-            font-size: 18px;
-            text-decoration: none;
-        }
-
-        .product-img {
-            width: 100%;
-            border-radius: 16px;
-        }
-
-        .container {
             padding: 20px;
+            border-radius: 20px;
         }
-
-        input, select {
+        input {
             width: 100%;
-            padding: 15px;
-            font-size: 18px;
-            border-radius: 12px;
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 10px;
             border: 1px solid #ddd;
-            margin-bottom: 15px;
         }
-
         button {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             background: black;
             color: white;
             border: none;
+            font-size: 18px;
             border-radius: 12px;
-            font-size: 20px;
+            margin-top: 15px;
+        }
+        .back {
+            display: block;
+            margin: 20px auto;
+            text-decoration: none;
+            color: blue;
+            font-size: 16px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="header">
-        <img src="IMG_1906.jpeg">
-        <a class="back-btn" href="index.html">الرجوع</a>
+<header class="site-header">
+    <div class="header-inner">
+
+        <!-- زر الرجوع -->
+        <a href="index.html" class="back-btn">
+            ⬅ الرجوع
+        </a>
+
+        <!-- لوجو المتجر -->
+        <div class="logo-wrap">
+            <img src="B1A0E998-A032-4185-8FD2-5BC946A379A3.png">
+        </div>
+
     </div>
+</header>
 
-    <div class="container">
 
-        <img src="IMG_1907.jpeg" class="product-img">
 
-        <h2>Gissah – Turkish Valley</h2>
-        <h3>MAD 450</h3>
+<div class="product-page">
+    <img src="IMG_1908.jpeg" style="width:100%;border-radius:12px;">
+    <h2>1 Million Parfum</h2>
+    <p class="price">MAD 400</p>
 
-        <label>عدد القطع:</label>
-        <select id="qty">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+    <label>عدد القطع:</label>
+    <input id="qty" type="number" value="1" min="1">
 
-        <button onclick="goToOrder()">تأكيد الطلب عبر واتساب</button>
-    </div>
+    <button onclick="order()">تأكيد الطلب عبر واتساب</button>
+</div>
 
 <script>
-function goToOrder() {
+function order() {
     let qty = document.getElementById("qty").value;
-    window.location.href = `order.html?product=Gissah&price=450&qty=${qty}`;
+    let msg = `السلام عليكم، بغيت نطلب عطر 1 Million Parfum\nالكمية: ${qty}`;
+    window.location.href = "https://wa.me/212693949973?text=" + encodeURIComponent(msg);
 }
 </script>
 
