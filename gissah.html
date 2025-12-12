@@ -75,11 +75,20 @@
 
 <script>
 function order() {
-    let qty = document.getElementById("qty").value;
-    let msg = `السلام عليكم، بغيت نطلب عطر Gissah\nالكمية: ${qty}`;
-    window.location.href = "https://wa.me/212693949973?text=" + encodeURIComponent(msg);
+  let qty = document.getElementById("qty").value;
+
+  let msg = `السلام عليكم، بغيت نطلب عطر Gissah
+الكمية: ${qty}`;
+
+  // الرقم هنا
+  let phone = "212693949973";
+
+  // إرسال مع التشفير
+  window.location.href =
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
 }
 </script>
+
 
 </body>
 </html>
