@@ -3,110 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تأكيد الطلب</title>
+<title>الفوترة والشحن</title>
 
 <style>
-body {
-  background: #f7f7f7;
-  font-family: sans-serif;
-  padding: 20px;
-}
+    body {
+        font-family: sans-serif;
+        background: #ffffff;
+        margin: 0;
+        padding: 0;
+    }
 
-h2 {
-  text-align: center;
-  color: #d4af37;
-}
+    h2 {
+        text-align: center;
+        padding: 20px 0;
+        font-size: 24px;
+        font-weight: bold;
+    }
 
-form {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-}
+    .container {
+        width: 90%;
+        margin: auto;
+        margin-top: 15px;
+    }
 
-label {
-  font-weight: bold;
-  margin-top: 10px;
-  display:flex;
-}
+    label {
+        font-size: 16px;
+        margin-top: 15px;
+        display: block;
+        font-weight: bold;
+    }
 
-input, textarea, select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 5px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
+    input, textarea, select {
+        width: 100%;
+        padding: 14px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        background: #f9f9f9;
+    }
 
-button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 20px;
-  background: #000;
-  color: white;
-  font-size: 18px;
-  border:none;
-  border-radius: 8px;
-}
+    textarea {
+        height: 120px;
+        resize: none;
+    }
 
+    button {
+        width: 100%;
+        background: #00a884;
+        color: white;
+        padding: 16px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
 </style>
-
 </head>
+
 <body>
 
-<h2>تأكيد الطلب عبر واتساب</h2>
+<h2>الفوترة والشحن</h2>
+
+<div class="container">
 
 <form id="orderForm">
 
-<label>الإسم الكامل</label>
-<input id="name" required>
+    <label>الاسم *</label>
+    <input id="name" required>
 
-<label>المدينة</label>
-<input id="city" required>
+    <label>الدولة / المنطقة *</label>
+    <input id="city" required placeholder="المغرب">
 
-<label>العنوان الكامل</label>
-<input id="address" required>
+    <label>عنوان الشارع / الحي (اختياري)</label>
+    <input id="address">
 
-<label>رقم الهاتف</label>
-<input id="phone" required>
+    <label>رقم المنزل واسم الشارع / الحي</label>
+    <input id="address2">
 
-<label>عدد القطع</label>
-<input id="qty" type="number" value="1" required>
+    <label>المدينة (اختياري)</label>
+    <input id="city2">
 
-<label>ملاحظات (اختياري)</label>
-<textarea id="note"></textarea>
+    <label>رقم هاتف (واتساب) *</label>
+    <input id="phone" required>
 
-<button type="button" onclick="sendToWhatsApp()">إرسال الطلب عبر واتساب</button>
+    <h3 style="margin-top:25px">معلومات إضافية</h3>
 
+    <label>ملاحظات الطلب (اختياري)</label>
+    <textarea id="note"></textarea>
+
+    <button type="button" onclick="sendToWhatsApp()">تأكيد الطلب</button>
 </form>
 
+</div>
 
 <script>
 function sendToWhatsApp() {
+
     let name = document.getElementById("name").value;
     let city = document.getElementById("city").value;
     let address = document.getElementById("address").value;
+    let address2 = document.getElementById("address2").value;
+    let city2 = document.getElementById("city2").value;
     let phone = document.getElementById("phone").value;
-    let qty = document.getElementById("qty").value;
     let note = document.getElementById("note").value;
 
     let msg = `
-🔔 طلب جديد
+🛍️ طلب جديد
 
-👤 الاسم: ${name}
-🏙️ المدينة: ${city}
-📍 العنوان: ${address}
-📞 الهاتف: ${phone}
-📦 عدد القطع: ${qty}
-📝 ملاحظات: ${note}
-____________________
+الاسم: ${name}
+الدولة/المنطقة: ${city}
+العنوان: ${address}
+العنوان الإضافي: ${address2}
+المدينة: ${city2}
+الهاتف (واتساب): ${phone}
+ملاحظات: ${note}
+-------------------------
 `;
 
     let url = "https://wa.me/212693949973?text=" + encodeURIComponent(msg);
-
     window.open(url, "_blank");
 }
-
 </script>
 
 </body>
