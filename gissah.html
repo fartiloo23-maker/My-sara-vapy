@@ -3,115 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gissah</title>
-    <link rel="stylesheet" href="style.css">
+    <title>تأكيد الطلب</title>
 
     <style>
-        .product-page {
-            width: 90%;
-            max-width: 400px;
-            margin: auto;
-            background: #fff;
+        body {
+            font-family: sans-serif;
+            background: #f8f8f8;
             padding: 20px;
-            border-radius: 20px;
+            direction: rtl;
+            text-align: right;
         }
-        input {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            margin-top: 10px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px #0002;
+            margin-bottom: 20px;
         }
+
+        .row {
+            margin: 12px 0;
+            font-size: 18px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #444;
+        }
+
         button {
             width: 100%;
             padding: 14px;
+            font-size: 20px;
             background: black;
             color: white;
             border: none;
-            font-size: 18px;
-            border-radius: 12px;
-            margin-top: 15px;
-        }
-        .back {
-            display: block;
-            margin: 20px auto;
-            text-decoration: none;
-            color: blue;
-            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
 
-<header class="site-header">
-    <div class="header-inner">
+    <h2>تأكيد الطلب</h2>
 
-        <!-- زر الرجوع -->
-        <a href="index.html" class="back-btn">
-            ⬅ الرجوع
-        </a>
-
-        <!-- لوجو المتجر -->
-        <div class="logo-wrap">
-            <img src="B1A0E998-A032-4185-8FD2-5BC946A379A3.png">
-        </div>
-
+    <div class="box">
+        <div class="row"><span class="label">الاسم:</span> <span id="name"></span></div>
+        <div class="row"><span class="label">المدينة:</span> <span id="city"></span></div>
+        <div class="row"><span class="label">العنوان:</span> <span id="address"></span></div>
+        <div class="row"><span class="label">الهاتف:</span> <span id="phone"></span></div>
+        <div class="row"><span class="label">الكمية:</span> <span id="qty"></span></div>
+        <div class="row"><span class="label">ملاحظات:</span> <span id="note"></span></div>
     </div>
-</header>
 
+    <button onclick="sendWhatsApp()">تأكيد عبر واتساب</button>
 
-<div class="product-page">
-    <img src="IMG_1908.jpeg" style="width:100%;border-radius:12px;">
-    <h2>Gissah – Turkish Valley</h2>
-    <p class="price">MAD 450</p>
-<label>عدد القطع :</label>
-<input id="qty" type="number" value="1" min="1">
+    <script>
+        // استرجاع البيانات المحفوظة
+        let d = JSON.parse(localStorage.getItem("orderData"));
 
-<label>الاسم :</label>
-<input id="name" type="text" placeholder="الاسم">
+        if (d) {
+            document.getElementById("name").textContent = d.name;
+            document.getElementById("city").textContent = d.city;
+            document.getElementById("address").textContent = d.address;
+            document.getElementById("phone").textContent = d.phone;
+            document.getElementById("qty").textContent = d.qty;
+            document.getElementById("note").textContent = d.note;
+        }
 
-<label>المدينة :</label>
-<input id="city" type="text" placeholder="المدينة">
+        function sendWhatsApp() {
+            let msg =
+                `📦 طلب جديد:\n` +
+                `👤 الاسم: ${d.name}\n` +
+                `🏙 المدينة: ${d.city}\n` +
+                `📍 العنوان: ${d.address}\n` +
+                `📞 الهاتف: ${d.phone}\n` +
+                `🔢 الكمية: ${d.qty}\n` +
+                `📝 ملاحظات: ${d.note}`;
 
-<label>العنوان :</label>
-<input id="address" type="text" placeholder="العنوان">
+            let num = "212693949973"; // ← دخل رقمك هنا
 
-<label>الهاتف :</label>
-<input id="phone" type="text" placeholder="الهاتف">
-
-<label>ملاحظات :</label>
-<textarea id="note" placeholder="ملاحظات"></textarea>
-
-<button onclick="goToOrderPage()" class="confirm-btn">
-    تأكيد الطلب
-</button>
-</div>
-
-
-<script>
-function sendToWhatsApp() {
-  let name = document.getElementById("name")?.value || "";
-  let city = document.getElementById("city")?.value || "";
-  let address = document.getElementById("address")?.value || "";
-  let phone = document.getElementById("phone")?.value || "";
-  let qty = document.getElementById("qty")?.value || "";
-  let note = document.getElementById("note")?.value || "";
-
-  let msg = `طلب جديد 🔔
-الاسم: ${name}
-المدينة: ${city}
-العنوان: ${address}
-الهاتف: ${phone}
-عدد القطع: ${qty}
-ملاحظات: ${note}`;
-
-  let url = "https://wa.me/212693949973?text=" + encodeURIComponent(msg);
-  window.open(url, "_blank");
-}
-</script>
-
+            window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`);
+        }
+    </script>
 
 </body>
 </html>
+
+
+
+
+
+
