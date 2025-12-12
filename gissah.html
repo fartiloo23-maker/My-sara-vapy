@@ -66,26 +66,47 @@
     <img src="IMG_1908.jpeg" style="width:100%;border-radius:12px;">
     <h2>Gissah – Turkish Valley</h2>
     <p class="price">MAD 450</p>
+<label>عدد القطع :</label>
+<input id="qty" type="number" value="1" min="1">
 
-    <label>عدد القطع:</label>
-    <input id="qty" type="number" value="1" min="1">
+<label>الاسم :</label>
+<input id="name" type="text" placeholder="الاسم">
 
-    <button onclick="order()">تأكيد الطلب عبر واتساب</button>
+<label>المدينة :</label>
+<input id="city" type="text" placeholder="المدينة">
+
+<label>العنوان :</label>
+<input id="address" type="text" placeholder="العنوان">
+
+<label>الهاتف :</label>
+<input id="phone" type="text" placeholder="الهاتف">
+
+<label>ملاحظات :</label>
+<textarea id="note" placeholder="ملاحظات"></textarea>
+
+<<button onclick="sendToWhatsApp()">تأكيد الطلب عبر واتساب</button>
 </div>
 
+
 <script>
-function order() {
-  let qty = document.getElementById("qty").value;
+function sendToWhatsApp() {
+  let name = document.getElementById("name")?.value || "";
+  let city = document.getElementById("city")?.value || "";
+  let address = document.getElementById("address")?.value || "";
+  let phone = document.getElementById("phone")?.value || "";
+  let qty = document.getElementById("qty")?.value || "";
+  let note = document.getElementById("note")?.value || "";
 
-  let msg = `السلام عليكم، بغيت نطلب عطر Gissah
-الكمية: ${qty}`;
+  let msg = `طلب جديد 🔔
+الاسم: ${name}
+المدينة: ${city}
+العنوان: ${address}
+الهاتف: ${phone}
+عدد القطع: ${qty}
+ملاحظات: ${note}`;
 
-  // الرقم هنا
-  let phone = "212693949973";
-
-  // إرسال مع التشفير
-  window.location.href =
-    "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+  let url = "https://wa.me/212693949973?text=" + encodeURIComponent(msg);
+  window.open(url, "_blank");
 }
 </script>
 
