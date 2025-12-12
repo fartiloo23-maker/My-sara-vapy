@@ -1,130 +1,93 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الفوترة والشحن</title>
-
-<style>
-    body {
-        font-family: sans-serif;
-        background: #ffffff;
-        margin: 0;
-        padding: 0;
-    }
-
-    h2 {
-        text-align: center;
-        padding: 20px 0;
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    .container {
-        width: 90%;
-        margin: auto;
-        margin-top: 15px;
-    }
-
-    label {
-        font-size: 16px;
-        margin-top: 15px;
-        display: block;
-        font-weight: bold;
-    }
-
-    input, textarea, select {
-        width: 100%;
-        padding: 14px;
-        margin-top: 5px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 16px;
-        background: #f9f9f9;
-    }
-
-    textarea {
-        height: 120px;
-        resize: none;
-    }
-
-    button {
-        width: 100%;
-        background: #00a884;
-        color: white;
-        padding: 16px;
-        margin-top: 20px;
-        border: none;
-        border-radius: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأكيد الطلب</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: black;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
-
 <body>
 
-<h2>الفوترة والشحن</h2>
+<h2>تأكيد الطلب</h2>
 
-<div class="container">
+<div class="box">
+    <label>الاسم:</label>
+    <input id="name">
 
-<form id="orderForm">
+    <label>المدينة:</label>
+    <input id="city">
 
-    <label>الاسم *</label>
-    <input id="name" required>
-
-    <label>الدولة / المنطقة *</label>
-    <input id="city" required placeholder="المغرب">
-
-    <label>عنوان الشارع / الحي (اختياري)</label>
+    <label>العنوان:</label>
     <input id="address">
 
-    <label>رقم المنزل واسم الشارع / الحي</label>
-    <input id="address2">
+    <label>الهاتف:</label>
+    <input id="phone">
 
-    <label>المدينة (اختياري)</label>
-    <input id="city2">
+    <label>الكمية:</label>
+    <input id="qty">
 
-    <label>رقم هاتف (واتساب) *</label>
-    <input id="phone" required>
-
-    <h3 style="margin-top:25px">معلومات إضافية</h3>
-
-    <label>ملاحظات الطلب (اختياري)</label>
-    <textarea id="note"></textarea>
-
-    <button type="button" onclick="sendToWhatsApp()">تأكيد الطلب</button>
-</form>
-
+    <label>ملاحظات:</label>
+    <textarea id="notes"></textarea>
 </div>
 
+<button onclick="sendWhatsApp()">تأكيد عبر واتساب</button>
+
 <script>
-function sendToWhatsApp() {
+function sendWhatsApp() {
 
-    let name = document.getElementById("name").value;
-    let city = document.getElementById("city").value;
-    let address = document.getElementById("address").value;
-    let address2 = document.getElementById("address2").value;
-    let city2 = document.getElementById("city2").value;
-    let phone = document.getElementById("phone").value;
-    let note = document.getElementById("note").value;
+    const name = document.getElementById("name").value;
+    const city = document.getElementById("city").value;
+    const address = document.getElementById("address").value;
+    const phone = document.getElementById("phone").value;
+    const qty = document.getElementById("qty").value;
+    const notes = document.getElementById("notes").value;
 
-    let msg = `
-🛍️ طلب جديد
+    // رقم الواتساب ديالك
+    const yourNumber = "212693949973"; 
 
+    const msg =
+`طلب جديد:
 الاسم: ${name}
-الدولة/المنطقة: ${city}
+المدينة: ${city}
 العنوان: ${address}
-العنوان الإضافي: ${address2}
-المدينة: ${city2}
-الهاتف (واتساب): ${phone}
-ملاحظات: ${note}
--------------------------
-`;
+الهاتف: ${phone}
+الكمية: ${qty}
+ملاحظات: ${notes}`;
 
-    let url = "https://wa.me/212693949973?text=" + encodeURIComponent(msg);
-    window.open(url, "_blank");
+    const url = `https://wa.me/${yourNumber}?text=${encodeURIComponent(msg)}`;
+    window.location.href = url;
 }
 </script>
 
