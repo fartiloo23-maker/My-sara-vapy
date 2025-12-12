@@ -71,16 +71,20 @@
     <label>عدد القطع:</label>
     <input id="qty" type="number" value="1" min="1">
 
-    <button onclick="order()">تأكيد الطلب عبر واتساب</button>
+    <button onclick="goToCheckout()">تأكيد الطلب عبر واتساب</button>
 </div>
 
-<script>
-function order() {
-    let qty = document.getElementById("qty").value;
-    let msg = `السلام عليكم، بغيت نطلب عطر 1 قصة – Turkish Valley\nالكمية: ${qty}`;
-    window.location.href = "https://wa.me/212693949973?text=" + encodeURIComponent(msg);
+
+
+function goToCheckout() {
+
+    const product = "Gissah – Turkish Valley";
+    const price = "400";
+    const qty = document.getElementById("qty").value || 1;
+
+    window.location.href =
+        `checkout.html?product=${encodeURIComponent(product)}&price=${price}&qty=${qty}`;
 }
 </script>
-
 </body>
 </html>
