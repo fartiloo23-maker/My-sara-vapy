@@ -139,11 +139,18 @@ body {
     justify-content: space-between;
 }
 
+.logo-wrap img {
+    width: 70px;
+}
+
+/* هنااا دير الكود الجديد */
+
 .back-btn {
-    color: #00cc66;
+    color: #d4af37;
     font-size: 20px;
     font-weight: 700;
     text-decoration: none;
+    text-shadow: 0 0 6px rgba(212,175,55,0.6);
 }
 
 .logo-wrap img {
