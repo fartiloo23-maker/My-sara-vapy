@@ -18,47 +18,38 @@
             background: white;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 0 10px #0001;
+            box-shadow: 0 0 10px #0002;
             margin-bottom: 20px;
         }
 
-        h2 {
-            margin-bottom: 15px;
-            color: #333;
-        }
-
         .row {
-            margin: 10px 0;
+            margin: 12px 0;
             font-size: 18px;
         }
 
         .label {
             font-weight: bold;
-            color: #555;
+            color: #444;
         }
 
         button {
             width: 100%;
             padding: 14px;
             font-size: 20px;
-            background: #25d366;
+            background: black;
             color: white;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-        }
-
-        button:hover {
-            opacity: 0.9;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="box">
-        <h2>معلومات الطلب</h2>
+    <h2>تأكيد الطلب</h2>
 
+    <div class="box">
         <div class="row"><span class="label">الاسم:</span> <span id="name"></span></div>
         <div class="row"><span class="label">المدينة:</span> <span id="city"></span></div>
         <div class="row"><span class="label">العنوان:</span> <span id="address"></span></div>
@@ -67,34 +58,34 @@
         <div class="row"><span class="label">ملاحظات:</span> <span id="note"></span></div>
     </div>
 
-    <button onclick="sendWhatsApp()">إرسال الطلب عبر واتساب</button>
+    <button onclick="sendWhatsApp()">تأكيد عبر واتساب</button>
 
     <script>
-        // قراءة البيانات من localStorage
-        let data = JSON.parse(localStorage.getItem("orderData"));
+        // استرجاع البيانات المحفوظة
+        let d = JSON.parse(localStorage.getItem("orderData"));
 
-        // إدخال البيانات داخل الصفحة
-        document.getElementById("name").textContent = data.name;
-        document.getElementById("city").textContent = data.city;
-        document.getElementById("address").textContent = data.address;
-        document.getElementById("phone").textContent = data.phone;
-        document.getElementById("qty").textContent = data.qty;
-        document.getElementById("note").textContent = data.note;
+        if (d) {
+            document.getElementById("name").textContent = d.name;
+            document.getElementById("city").textContent = d.city;
+            document.getElementById("address").textContent = d.address;
+            document.getElementById("phone").textContent = d.phone;
+            document.getElementById("qty").textContent = d.qty;
+            document.getElementById("note").textContent = d.note;
+        }
 
-        // زر إرسال الواتساب
         function sendWhatsApp() {
             let msg =
                 `📦 طلب جديد:\n` +
-                `👤 الاسم: ${data.name}\n` +
-                `🏙 المدينة: ${data.city}\n` +
-                `📍 العنوان: ${data.address}\n` +
-                `📞 الهاتف: ${data.phone}\n` +
-                `🔢 الكمية: ${data.qty}\n` +
-                `📝 ملاحظات: ${data.note}`;
+                `👤 الاسم: ${d.name}\n` +
+                `🏙 المدينة: ${d.city}\n` +
+                `📍 العنوان: ${d.address}\n` +
+                `📞 الهاتف: ${d.phone}\n` +
+                `🔢 الكمية: ${d.qty}\n` +
+                `📝 ملاحظات: ${d.note}`;
 
-            let phoneNumber = "212693949973"; // ⚠️ دير الرقم ديالك هنا
+            let num = "212600000000"; // ← دخل رقمك هنا
 
-            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`);
+            window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`);
         }
     </script>
 
