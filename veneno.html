@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENENO</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .product-page {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .product-page img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: black;
+            color: white;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .back {
+            color: blue;
+            text-decoration: none;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="index.html" class="back">⬅ الرجوع</a>
+
+<div class="product-page">
+    <img src="IMG_1864.jpeg" alt="VENENO">
+    <h2>VENENO</h2>
+    <p>الثمن: <strong>500 MAD</strong></p>
+
+    <p>بديل فاخر لعطر Smoking Hot من Kilian</p>
+
+    <label>عدد القطع:</label>
+    <input type="number" id="qty" value="1" min="1">
+
+    <button onclick="order()">تأكيد الطلب عبر واتساب</button>
+</div>
+
+<script>
+function order() {
+    let qty = document.getElementById('qty').value;
+    let msg = `سلام، بغيت نطلب منتج VENENO\nالكمية: ${qty}`;
+    window.location.href = "https://wa.me/212600000000?text=" + encodeURIComponent(msg);
+}
+</script>
+
+</body>
+</html>
