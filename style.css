@@ -146,11 +146,11 @@ body {
 /* هنااا دير الكود الجديد */
 
 .back-btn {
-    color: #d4af37;
-    font-size: 20px;
-    font-weight: 700;
+    color: #d4af37 !important; /* ذهبي */
+    font-size: 22px;
+    font-weight: 800;
     text-decoration: none;
-    text-shadow: 0 0 6px rgba(212,175,55,0.6);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
 }
 
 .logo-wrap img {
