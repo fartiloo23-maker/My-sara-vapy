@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تأكيد الطلب</title>
+
+<style>
+body {
+  background: #f7f7f7;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #d4af37;
+}
+
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display:flex;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background: #000;
+  color: white;
+  font-size: 18px;
+  border:none;
+  border-radius: 8px;
+}
+
+</style>
+
+</head>
+<body>
+
+<h2>تأكيد الطلب عبر واتساب</h2>
+
+<form id="orderForm">
+
+<label>الإسم الكامل</label>
+<input id="name" required>
+
+<label>المدينة</label>
+<input id="city" required>
+
+<label>العنوان الكامل</label>
+<input id="address" required>
+
+<label>رقم الهاتف</label>
+<input id="phone" required>
+
+<label>عدد القطع</label>
+<input id="qty" type="number" value="1" required>
+
+<label>ملاحظات (اختياري)</label>
+<textarea id="note"></textarea>
+
+<button type="button" onclick="sendToWhatsApp()">إرسال الطلب عبر واتساب</button>
+
+</form>
+
+<script>
+function sendToWhatsApp() {
+  let name = document.getElementById("name").value;
+  let city = document.getElementById("city").value;
+  let address = document.getElementById("address").value;
+  let phone = document.getElementById("phone").value;
+  let qty = document.getElementById("qty").value;
+  let note = document.getElementById("note").value;
+
+  let msg = 
+`🔔 طلب جديد  
+————————————
+👤 الإسم: ${name}
+🏙 المدينة: ${city}
+📍 العنوان: ${address}
+📱 الهاتف: ${phone}
+📦 عدد القطع: ${qty}
+📝 ملاحظات: ${note}
+————————————
+`;
+
+  let url = `https://wa.me/212693949973?text=` + encodeURIComponent(msg);
+
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
