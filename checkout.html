@@ -80,6 +80,7 @@ button {
 
 </form>
 
+
 <script>
 function sendToWhatsApp() {
     let name = document.getElementById("name").value;
@@ -92,19 +93,20 @@ function sendToWhatsApp() {
     let msg = `
 🔔 طلب جديد
 
-اسم: ${name} 👤
-المدينة: ${city} 🏙️
-العنوان: ${address} 📍
-الهاتف: ${phone} ☎️
-عدد القطع: ${qty} 📦
-ملاحظات: ${note} 📝
-________________
+👤 الاسم: ${name}
+🏙️ المدينة: ${city}
+📍 العنوان: ${address}
+📞 الهاتف: ${phone}
+📦 عدد القطع: ${qty}
+📝 ملاحظات: ${note}
+____________________
 `;
 
     let url = "https://wa.me/212693949973?text=" + encodeURIComponent(msg);
 
     window.open(url, "_blank");
 }
+
 </script>
 
 </body>
