@@ -68,15 +68,13 @@
 </div>
 
 <script>
-
 function goToCheckout() {
+  const product = "sauvage parfum";
+  const price = 800; // رقم ماشي string
+  const qty = document.getElementById("qty").value;
 
-    const product = "sauvage parfum";
-    const price = 800;
-    const qty = document.getElementById("qty").value || 1;
-
-    window.location.href =
-        `checkout.html?product=${encodeURIComponent(product)}&price=${price}&qty=${qty}`;
+  window.location.href =
+    `checkout.html?product=${encodeURIComponent(product)}&price=${price}&qty=${qty}`;
 }
 </script>
 </body>
