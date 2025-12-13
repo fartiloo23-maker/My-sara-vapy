@@ -92,7 +92,7 @@ function payWithPaypal() {
   const priceUSD = 65; // ثمن القطعة بالدولار
   const qty = document.getElementById("qty").value;
 
-  document.getElementById("pp_amount").value = priceUSD;
+  document.getElementById("pp_amount").value = priceUSD * qty;
   document.getElementById("pp_qty").value = qty;
 
   document.getElementById("paypalForm").submit();
