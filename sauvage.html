@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sauvage Elixir</title>
+    <title> sauvage parfum </title>
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -41,45 +41,43 @@
             font-size: 16px;
         }
     </style>
-</head>
 
-<body>
+
+
 
 <header class="site-header">
     <div class="header-inner">
 
-        <!-- زر الرجوع -->
-        <a href="index.html" class="back-btn">
-            ⬅ الرجوع
-        </a>
+        <a href="index.html" class="back-btn">⬅️ الرجوع</a>
 
-        <!-- لوجو المتجر -->
         <div class="logo-wrap">
             <img src="B1A0E998-A032-4185-8FD2-5BC946A379A3.png">
         </div>
 
     </div>
 </header>
-
-
 <div class="product-page">
     <img src="IMG_1906.jpeg" style="width:100%;border-radius:12px;">
-    <h2>Sauvage Elixir</h2>
-    <p class="price">MAD 480</p>
+    <h2> sauvage élixir</h2>
+    <p class="price">MAD 800</p>
 
     <label>عدد القطع:</label>
     <input id="qty" type="number" value="1" min="1">
 
-    <button onclick="order()">تأكيد الطلب عبر واتساب</button>
+    <button onclick="goToCheckout()">تأكيد الطلب عبر واتساب</button>
 </div>
 
 <script>
-function order() {
-    let qty = document.getElementById("qty").value;
-    let msg = `السلام عليكم، بغيت نطلب عطر Sauvage Elixir\nالكمية: ${qty}`;
-    window.location.href = "https://wa.me/212693949973?text=" + encodeURIComponent(msg);
+
+function goToCheckout() {
+
+    const product = "Gissah – Turkish Valley";
+    const price = "400";
+    const qty = document.getElementById("qty").value || 1;
+
+    window.location.href =
+        `checkout.html?product=${encodeURIComponent(product)}&price=${price}&qty=${qty}`;
 }
 </script>
-
 </body>
 </html>
