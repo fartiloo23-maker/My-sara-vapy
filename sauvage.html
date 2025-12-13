@@ -81,12 +81,23 @@
 <script>
 function goToCheckout() {
   const product = "Sauvage Elixir";
-  const price = 650; // الثمن الجديد
+  const price = 650;
   const qty = document.getElementById("qty").value;
 
   window.location.href =
     `checkout.html?product=${encodeURIComponent(product)}&price=${price}&qty=${qty}`;
 }
+
+function payWithPaypal() {
+  const priceUSD = 65; // ثمن القطعة بالدولار
+  const qty = document.getElementById("qty").value;
+
+  document.getElementById("pp_amount").value = priceUSD;
+  document.getElementById("pp_qty").value = qty;
+
+  document.getElementById("paypalForm").submit();
+}
+
 </script>
 </body>
 </html>
