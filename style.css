@@ -160,20 +160,16 @@ body {
 
 
 .old-price {
-  position: relative;
-  display: inline-block;
-  color: #aaa;
-  font-size: 14px;
-  margin-right: 8px;
+  text-decoration: line-through;
+  text-decoration-color: #d4af37;
+  text-decoration-thickness: 2px;
 }
 
-.old-price::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 100%;
-  height: 2px;
-  background: #d4af37; /* ذهبي */
-  transform: translateY(-50%);
+.price {
+  position: static !important;
+}
+
+.old-price {
+  position: relative;
+  display: inline-block;
 }
