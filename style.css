@@ -178,3 +178,34 @@ body {
 .discount-badge {
   display: none !important;
 }
+.btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* زر واتساب */
+.btn.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+/* زر Visa / PayPal */
+.btn.visa {
+  background: #0070ba;
+  color: white;
+}
+
+/* تأثير */
+.btn:hover {
+  opacity: 0.9;
+}
