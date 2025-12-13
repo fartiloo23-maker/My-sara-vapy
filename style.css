@@ -159,7 +159,7 @@ body {
 
 
 };
-..old-price {
+.old-price {
   position: relative;
   color: #aaa;
   font-size: 14px;
