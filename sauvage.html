@@ -62,26 +62,18 @@
     <label>عدد القطع:</label>
     <input id="qty" type="number" value="1" min="1">
 
-    <button onclick="goToCheckout()">تأكيد الطلب عبر واتساب</button>
-</div><!-- زر الدفع ببطاقة Visa -->
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-top:15px;">
-  
+    <button onclick="goToCheckout()" class="btn whatsapp">
+  تأكيد الطلب عبر واتساب 📱
+</button>
+<form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="margin-top:15px;">
   <input type="hidden" name="cmd" value="_xclick">
   <input type="hidden" name="business" value="fartiloo23@gmail.com">
   <input type="hidden" name="item_name" value="Sauvage Elixir">
-  <input type="hidden" name="amount" value="650">
+  <input type="hidden" name="amount" id="pp_amount" value="650">
+<input type="hidden" name="quantity" id="pp_qty" value="1">
   <input type="hidden" name="currency_code" value="MAD">
 
-  <button type="submit" style="
-    width:100%;
-    padding:14px;
-    background:#0070ba;
-    color:white;
-    border:none;
-    border-radius:6px;
-    font-size:16px;
-    font-weight:bold;
-  ">
+  <button type="submit" class="btn visa">
     الدفع ببطاقة Visa 💳
   </button>
 </form>
