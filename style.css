@@ -175,4 +175,6 @@ body {
 .price {
   position: static !important;
 }
-
+.discount-badge {
+  display: none !important;
+}
