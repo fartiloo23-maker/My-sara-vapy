@@ -156,3 +156,17 @@ body {
 .logo-wrap img {
     width: 70px;
 }
+const PRICES = {
+  sauvage: {
+    old: 800,
+    new: 650
+  },
+  million: {
+    old: 400,
+    new: 350
+  },
+  gissah: {
+    old: 900,
+    new: 750
+  }
+};
