@@ -160,8 +160,15 @@ body {
 
 
 .old-price {
+  position: relative;
+  display: inline-block;
+
+  color: #aaa;
+  font-size: 14px;
+  margin-right: 8px;
+
   text-decoration: line-through;
-  text-decoration-color: #d4af37;
+  text-decoration-color: red;   /* لون الخط */
   text-decoration-thickness: 2px;
 }
 
@@ -169,7 +176,3 @@ body {
   position: static !important;
 }
 
-.old-price {
-  position: relative;
-  display: inline-block;
-}
